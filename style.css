@@ -469,3 +469,20 @@ p {
   padding-top: 1rem;
 }
 }
+
+
+@media screen and (max-width: 400px) {
+
+.myimage{
+    display: none;
+}
+
+}
+
+@media screen and (max-width: 200px) {
+
+  .myimage{
+      display: none;
+  }
+  
+  }
