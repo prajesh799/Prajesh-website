@@ -210,21 +210,7 @@ a:link {
   width: 100%;
 }
 
-/* Responsive layout - makes a two column-layout instead of four columns */
-@media screen and (max-width: 800px) {
-  .column {
-    flex: 50%;
-    max-width: 50%;
-  }
-}
 
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .column {
-    flex: 100%;
-    max-width: 100%;
-  }
-}
 /* art ends */
 
 /* jokes */
@@ -335,3 +321,151 @@ p {
   padding-bottom: 10px;
 }
 /* footer ends */
+
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
+  }
+
+  .myimage{
+    display: none;
+  }
+  
+
+.pp{
+  justify-content: left;
+  margin: 2em;
+  width: 30vw;
+
+}
+.navbar{
+  padding: 0;
+  margin: 0;
+  margin-top: 20px;
+  margin-right: 50px;
+}
+.navv{
+  /* width: 70vw;
+  /* margin: 0; */
+  /* margin-top: 10em;  */
+  /* justify-content:left; */
+  /* margin: 2em; */
+  width: 30vw;
+  margin: 0;
+}
+
+.h1{
+  padding: 0;
+  margin: 0;
+  padding-top: 30px;
+  width: 80vw;
+  height: 30vh;
+  font-size: 8vh;
+
+}
+
+.h2{
+  padding: 0;
+  margin: 0;
+  margin-top: 1rem;
+  width: 80vw;
+  font-size: 7vw;
+}
+  
+.jokes{
+  width: auto;
+}
+.card{
+
+  width: max-content;
+  
+
+  /* flex-grow: 10; */
+  flex-basis: 3vw;
+  font-size: 1.2vw;
+}
+ .border1,.border2,.border3{
+  height: 10vh;
+ }
+.ff{
+  padding-top: 1rem;
+}
+
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
+  .myimage{
+    display: none;
+  }
+  /* myimage{
+    display: none;
+  }
+   */
+
+.pp{
+  justify-content: left;
+  margin: 2em;
+  width: 30vw;
+
+}
+.navbar{
+  padding: 0;
+  margin: 0;
+  margin-top: 20px;
+  margin-right: 50px;
+}
+.navv{
+  /* width: 70vw;
+  /* margin: 0; */
+  /* margin-top: 10em;  */
+  /* justify-content:left; */
+  /* margin: 2em; */
+  width: 30vw;
+  margin: 0;
+}
+
+.h1{
+  padding: 0;
+  margin: 0;
+  padding-top: 30px;
+  width: 80vw;
+  height: 30vh;
+  font-size: 8vh;
+
+}
+
+.h2{
+  padding: 0;
+  margin: 0;
+  margin-top: 1rem;
+  width: 80vw;
+  font-size: 7vw;
+}
+  
+.jokes{
+  width: auto;
+}
+.card{
+
+  width: max-content;
+  
+
+  /* flex-grow: 10; */
+  flex-basis: 3vw;
+  font-size: 1.2vw;
+}
+ .border1,.border2,.border3{
+  height: 10vh;
+ }
+.ff{
+  padding-top: 1rem;
+}
+}
