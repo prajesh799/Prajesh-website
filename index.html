@@ -16,12 +16,10 @@
   <script src="https://unpkg.com/feather-icons"></script>
 
   <style>
-    /* Typography */
     .brand-font { font-family: 'Playfair Display', serif; }
     h2, h3 { font-family: 'Playfair Display', serif; }
     body, p, nav a, .art-overlay p { font-family: 'Open Sans', sans-serif; }
 
-    /* Gallery */
     .row { display: flex; flex-wrap: wrap; padding: 0 4px; }
     .column { flex: 25%; max-width: 25%; padding: 0 4px; }
     .column img { margin-top: 8px; width: 100%; border-radius: 8px; transition: transform 0.5s ease, filter 0.5s ease; cursor: pointer; }
@@ -37,10 +35,8 @@
     #lightbox img { max-width: 90%; max-height: 80%; border-radius: 10px; }
     #lightbox span { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer; }
 
-    /* Header logo zoom on hover */
     .logo-header { transition: transform 0.3s ease; }
     .logo-header:hover { transform: scale(1.2); }
-
   </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
@@ -48,34 +44,28 @@
   <!-- Header -->
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-6xl mx-auto flex justify-between items-center p-4">
-      <!-- Logo & Name -->
       <a href="#home" class="flex items-center space-x-4">
         <img src="Drawings/logo.png" alt="My Art Shop Logo" class="h-16 w-16 object-contain rounded-full logo-header">
         <div class="flex flex-col">
-          <span class="text-3xl font-extrabold text-gray-800 brand-font">My Art Shop</span>
-          <span class="text-sm text-gray-500">Original Hand-Painted Artworks</span>
+          <span class="text-3xl font-extrabold text-gray-800 brand-font">Prajesh Art Shop</span>
+          <span class="text-sm text-gray-500">Authentic Hand-Painted Artworks</span>
         </div>
       </a>
-
-      <!-- Navigation -->
-<nav class="space-x-6 text-lg font-medium hidden md:flex items-center">
-  <a href="#home" class="hover:text-indigo-600 transition-colors">Home</a>
-  <a href="#gallery" class="hover:text-indigo-600 transition-colors">Gallery</a>
-  <a href="#about" class="hover:text-indigo-600 transition-colors">About</a>
-  <a href="#contact" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition flex items-center justify-center">
-    Contact
-  </a>
-</nav>
-
-
-      <!-- Mobile Menu Button -->
+      <nav class="space-x-6 text-lg font-medium hidden md:flex items-center">
+        <a href="#home" class="hover:text-indigo-600 transition-colors">Home</a>
+        <a href="#gallery" class="hover:text-indigo-600 transition-colors">Gallery</a>
+        <a href="#about" class="hover:text-indigo-600 transition-colors">About</a>
+        <a href="#contact" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition flex items-center justify-center">
+          Contact
+        </a>
+      </nav>
       <button id="mobile-menu-btn" class="md:hidden text-gray-800 focus:outline-none">
         <i data-feather="menu"></i>
       </button>
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section id="home" class="bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 py-24 text-center">
     <div class="max-w-4xl mx-auto px-4">
       <h2 class="text-5xl font-extrabold mb-6 text-gray-800 leading-tight brand-font">
@@ -107,25 +97,20 @@
     <img id="lightbox-img" src="" onclick="event.stopPropagation()">
   </div>
 
-  <!-- About Section -->
+  <!-- About -->
   <section id="about" class="py-20 px-4 bg-white">
     <div class="max-w-4xl mx-auto text-center">
       <h3 class="text-3xl font-semibold mb-6 brand-font">About the Artist</h3>
       <p class="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-        With over <strong>7 years of professional experience</strong>, I specialize in creating hand-painted artworks that bring life, emotion, and elegance to any space. My passion lies in blending traditional techniques with modern aesthetics, ensuring every piece I create is <strong>original, high-quality, and crafted with precision</strong>.
-        <br><br>
-        Whether you’re decorating your home, office, or searching for the perfect gift, my goal is to deliver <strong>timeless art that resonates with you</strong>. Trusted by collectors and first‑time buyers alike, I stand by the quality, care, and professionalism behind each painting.
+        With over <strong>5 years of experience</strong>, I specialize in creating hand-painted artworks that bring life, emotion, and elegance to any space. My passion lies in blending traditional techniques with modern aesthetics, ensuring every piece I create is <strong>high-quality, and crafted with precision</strong>.
       </p>
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- Contact -->
   <section id="contact" class="py-20 px-4 bg-gray-100">
     <div class="max-w-4xl mx-auto text-center">
       <h3 class="text-3xl font-semibold mb-6 brand-font">Get in Touch</h3>
-      <p class="text-lg text-gray-700 mb-6 max-w-2xl mx-auto">
-        I'd love to hear from you! Whether you're interested in buying a painting, placing a custom order, or just saying hello, feel free to reach out through any of the platforms below.
-      </p>
       <div class="flex justify-center space-x-8 text-gray-700 text-lg mt-8">
         <a href="mailto:prajessparajuli109@gmail.com" class="flex items-center space-x-2 hover:text-indigo-600 transition">
           <i data-feather="mail"></i><span>Email</span>
@@ -142,31 +127,59 @@
 
   <!-- Scripts -->
   <script>
-    // Mobile menu toggle
-    const btn = document.getElementById('mobile-menu-btn');
-    const nav = document.querySelector('nav');
-    btn.addEventListener('click', () => { nav.classList.toggle('hidden'); });
-
-    // Gallery Artworks (all your artworks included)
-    const artworks = [];
-    const letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','zv','zw','zx','zy','zz'];
-    letters.forEach((l) => {
-      artworks.push({ title: "", price: "NRs. 800", img: `Drawings/${l}.jpg`, desc: "Refreshing ocean view." });
+    // Mobile menu
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      document.querySelector('nav').classList.toggle('hidden');
     });
-    artworks.push({ title: "Mountain Peaks", price: "NRs. 800", img: "Drawings/zzz.jpg", desc: "Majestic mountains." });
 
-    const columns = [document.getElementById("col1"), document.getElementById("col2"), document.getElementById("col3"), document.getElementById("col4")];
+    // Artworks list (all your drawings with unique names & prices)
+    const artworks = [
+      { title: "Chihiro", price: "NRs. 1500", img: "Drawings/a.jpg", desc: "" },
+      { title: "Buddha & Oni", price: "NRs. 2500", img: "Drawings/b.jpg", desc: "" },
+      { title: "Jotaro", price: "NRs. 2000", img: "Drawings/c.jpg", desc: "" },
+      { title: "Kenjaku", price: "NRs. 1800", img: "Drawings/d.jpg", desc: "" },
+      { title: "Straw-Hat Crew", price: "NRs. 5200", img: "Drawings/e.jpg", desc: "" },
+      { title: "Toji", price: "NRs. 8600", img: "Drawings/f.jpg", desc: "" },
+      { title: "Junji Itou", price: "NRs. 1200", img: "Drawings/g.jpg", desc: "" },
+      { title: "Zoro", price: "NRs. 1200", img: "Drawings/h.jpg", desc: "" },
+      { title: "Dabi", price: "NRs. 600", img: "Drawings/i.jpg", desc: "" },
+      { title: "Josuke & Jotaro", price: "NRs. 800", img: "Drawings/j.jpg", desc: "" },
+      { title: "Naruto", price: "NRs. 500", img: "Drawings/k.jpg", desc: "" },
+      { title: "Sukuna", price: "NRs. 700", img: "Drawings/l.jpg", desc: "" },
+      { title: "Asta", price: "NRs. 400", img: "Drawings/m.jpg", desc: "" },
+      { title: "Midoriya", price: "NRs. 400", img: "Drawings/n.jpg", desc: "" },
+      { title: "Mayuri", price: "NRs. 500", img: "Drawings/o.jpg", desc: "" },
+      { title: "Buggy", price: "NRs. 600", img: "Drawings/p.jpg", desc: "" },
+      { title: "Yamato", price: "NRs. 500", img: "Drawings/q.jpg", desc: "" },
+      { title: "Goku", price: "NRs. 300", img: "Drawings/r.jpg", desc: "" },
+      { title: "Gyomei", price: "NRs. 300", img: "Drawings/s.jpg", desc: "" },
+      { title: "Rick & Morty", price: "NRs. 200", img: "Drawings/t.jpg", desc: "" },
+      { title: "Goku", price: "NRs. 300", img: "Drawings/u.jpg", desc: "" },
+      { title: "Sanemi", price: "NRs. 500", img: "Drawings/v.jpg", desc: "." },
+      { title: "Straw-Hat Crew", price: "NRs. 1100", img: "Drawings/w.jpg", desc: "" },
+      { title: "Ichigo", price: "NRs. 300", img: "Drawings/x.jpg", desc: "" },
+      { title: "Buddha", price: "NRs. 300", img: "Drawings/y.jpg", desc: "" },
+      { title: "Escanor", price: "NRs. 200", img: "Drawings/z.jpg", desc: "" },
+      { title: "Saitama", price: "NRs. 200", img: "Drawings/zv.jpg", desc: "" },
+      { title: "Chopper", price: "NRs. 500", img: "Drawings/zw.jpg", desc: "" },
+      { title: "Rengoku", price: "NRs. 200", img: "Drawings/zx.jpg", desc: "" },
+      { title: "Zoro", price: "NRs. 200", img: "Drawings/zy.jpg", desc: "" },
+      { title: "Zenitsu", price: "NRs. 300", img: "Drawings/zz.jpg", desc: "" }
+      
+    ];
+
+    const cols = [document.getElementById("col1"), document.getElementById("col2"), document.getElementById("col3"), document.getElementById("col4")];
     artworks.forEach((art, i) => {
-      const container = document.createElement("div");
-      container.className = "art-container";
-      container.innerHTML = `
-        <img src="${art.img}" alt="${art.title} - ${art.desc}" loading="lazy" onclick="openLightbox('${art.img}')">
+      const div = document.createElement("div");
+      div.className = "art-container";
+      div.innerHTML = `
+        <img src="${art.img}" alt="${art.title}" onclick="openLightbox('${art.img}')">
         <div class="art-overlay">
           <h3 class="brand-font">${art.title}</h3>
           <p>${art.price}</p>
           <p>${art.desc}</p>
         </div>`;
-      columns[i % 4].appendChild(container);
+      cols[i % 4].appendChild(div);
     });
 
     function openLightbox(src) {
@@ -176,7 +189,6 @@
     function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; }
     document.addEventListener('keydown', e => e.key === "Escape" && closeLightbox());
 
-    // Feather icons
     feather.replace();
   </script>
 
