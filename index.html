@@ -1,420 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Prajesh's Website</title>
-    <link rel="icon" href="logo.png" type="image/icon" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <!-- navbar  -->
-    <header class="header">
-      <a href="#" class="pp">Prajesh Parajuli</a>
-      <nav class="navbar">
-        <a href="#" class="navv">Home</a>
-        <a href="#artsection" class="navv">Art</a>
-        <a href="#jokesection" class="navv">Jokes</a>
-        <a href="#endsection" class="navv">END</a>
-      </nav>
-    </header>
-    <!-- navbar ends  -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Art Shop</title>
 
-    <!-- intro section  -->
-    <div class="main">
-      <div class="main_item">
-        <div class="h1">WELCOME TO MY WEBSITE</div>
-        <div class="h2">
-          Welcome to my website. Below are a few of my works of art and some dad jokes collected from the internet. I hope you will love my art and enjoy my dad joke collection. Have fun and always keep on learning.&#9774;
+  <!-- Favicon -->
+  <link rel="icon" href="Drawings/logoc.png" type="image/png">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Feather Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+
+  <style>
+    /* Typography */
+    .brand-font { font-family: 'Playfair Display', serif; }
+    h2, h3 { font-family: 'Playfair Display', serif; }
+    body, p, nav a, .art-overlay p { font-family: 'Open Sans', sans-serif; }
+
+    /* Gallery */
+    .row { display: flex; flex-wrap: wrap; padding: 0 4px; }
+    .column { flex: 25%; max-width: 25%; padding: 0 4px; }
+    .column img { margin-top: 8px; width: 100%; border-radius: 8px; transition: transform 0.5s ease, filter 0.5s ease; cursor: pointer; }
+    .art-container { position: relative; margin-top: 8px; overflow: hidden; border-radius: 8px; }
+    .art-container:hover img { transform: scale(1.05); filter: brightness(0.8); }
+    .art-overlay { position: absolute; bottom: -100%; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); color: #fff; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; transition: bottom 0.5s ease, opacity 0.5s ease; opacity: 0; }
+    .art-container:hover .art-overlay { bottom: 0; opacity: 1; }
+
+    @media screen and (max-width: 800px) { .column { flex: 50%; max-width: 50%; } }
+    @media screen and (max-width: 600px) { .column { flex: 100%; max-width: 100%; } }
+
+    #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; z-index: 1000; }
+    #lightbox img { max-width: 90%; max-height: 80%; border-radius: 10px; }
+    #lightbox span { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer; }
+
+    /* Header logo zoom on hover */
+    .logo-header { transition: transform 0.3s ease; }
+    .logo-header:hover { transform: scale(1.2); }
+
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex justify-between items-center p-4">
+      <!-- Logo & Name -->
+      <a href="#home" class="flex items-center space-x-4">
+        <img src="Drawings/logo.png" alt="My Art Shop Logo" class="h-16 w-16 object-contain rounded-full logo-header">
+        <div class="flex flex-col">
+          <span class="text-3xl font-extrabold text-gray-800 brand-font">My Art Shop</span>
+          <span class="text-sm text-gray-500">Original Hand-Painted Artworks</span>
         </div>
-      </div>
-      <img src="my.jpg" class="myimage" alt="my_jpg" />
-    </div>
-    <!-- intro section ends -->
+      </a>
 
-    <!-- BORDER 1-->
-    <div class="border1" id="artsection">
-      <span class="bb1">&#9734; ARTS FOR YOU &#9734;</span>
-    </div>
-    <!-- BORDER 1 ENDS -->
+      <!-- Navigation -->
+<nav class="space-x-6 text-lg font-medium hidden md:flex items-center">
+  <a href="#home" class="hover:text-indigo-600 transition-colors">Home</a>
+  <a href="#gallery" class="hover:text-indigo-600 transition-colors">Gallery</a>
+  <a href="#about" class="hover:text-indigo-600 transition-colors">About</a>
+  <a href="#contact" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition flex items-center justify-center">
+    Contact
+  </a>
+</nav>
 
-    <!-- art section -->
-    <!-- <div class="art">
-      <div class="art_item">art pictures</div>
-    </div> -->
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="md:hidden text-gray-800 focus:outline-none">
+        <i data-feather="menu"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 py-24 text-center">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-5xl font-extrabold mb-6 text-gray-800 leading-tight brand-font">
+        Welcome to <span class="text-indigo-600">My Art World</span>
+      </h2>
+      <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed">
+        Discover a collection of hand-painted artworks crafted with passion, precision, and purpose. Transform your space with pieces that tell a story.
+      </p>
+      <a href="#gallery" class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-md shadow hover:bg-indigo-700 transition text-lg font-medium">
+        Explore the Gallery
+      </a>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="max-w-6xl mx-auto py-16 px-4">
+    <h3 class="text-3xl font-semibold text-center mb-10 brand-font">Art Gallery</h3>
     <div class="row">
-      <div class="column">
-        <img src="drawings/kenjaku.jpg" style="width: 100%" alt="kenjaku" />
-        <img src="drawings/luffy.jpg" style="width: 100%" alt="luffy" />
-        <img src="drawings/naruto.jpg" style="width: 100%" alt="naruto" />
-        <img src="drawings/nezuko.jpg" style="width: 100%" alt="nezuko" />
-        <img src="drawings/queen.jpg" style="width: 100%" alt="queen" />
-      </div>
-      <div class="column">
-        <img src="drawings/goku2.jpg" style="width: 100%" alt="goku2" />
-        <img src="drawings/ichigo.jpg" style="width: 100%" alt="ichigo" />
-        <img src="drawings/jojo.jpg" style="width: 100%" alt="jojo" />
-        <img src="drawings/jojo2.jpg" style="width: 100%" alt="jojo2" />
-        <img src="drawings/Junji.jpg" style="width: 100%" alt="Junji" />
-      </div>
-      <div class="column">
-        <img src="drawings/buddha.jpg" style="width: 100%" alt="buddha" />
-        <img src="drawings/chopper.jpg" style="width: 100%" alt="chopper" />
-        <img src="drawings/dabi.jpg" style="width: 100%" alt="dabi" />
-        <img src="drawings/escanor.jpg" style="width: 100%" alt="escanor" />
-        <img src="drawings/goku.jpg" style="width: 100%" alt="goku" />
-      </div>
-      <div class="column">
-        <img src="drawings/rengoku.jpg" style="width: 100%" alt="rengoku" />
-        <img src="drawings/titan.jpg" style="width: 100%" alt="titan" />
-        <img src="drawings/zenitsu.jpg" style="width: 100%" alt="zenitsu" />
-        <img src="drawings/zoro.jpg" style="width: 100%" alt="zoro" />
-        <img src="drawings/zoro2.jpg" style="width: 100%" alt="zoro2" />
+      <div class="column" id="col1"></div>
+      <div class="column" id="col2"></div>
+      <div class="column" id="col3"></div>
+      <div class="column" id="col4"></div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" onclick="closeLightbox()">
+    <span>&times;</span>
+    <img id="lightbox-img" src="" onclick="event.stopPropagation()">
+  </div>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 px-4 bg-white">
+    <div class="max-w-4xl mx-auto text-center">
+      <h3 class="text-3xl font-semibold mb-6 brand-font">About the Artist</h3>
+      <p class="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+        With over <strong>7 years of professional experience</strong>, I specialize in creating hand-painted artworks that bring life, emotion, and elegance to any space. My passion lies in blending traditional techniques with modern aesthetics, ensuring every piece I create is <strong>original, high-quality, and crafted with precision</strong>.
+        <br><br>
+        Whether you’re decorating your home, office, or searching for the perfect gift, my goal is to deliver <strong>timeless art that resonates with you</strong>. Trusted by collectors and first‑time buyers alike, I stand by the quality, care, and professionalism behind each painting.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 px-4 bg-gray-100">
+    <div class="max-w-4xl mx-auto text-center">
+      <h3 class="text-3xl font-semibold mb-6 brand-font">Get in Touch</h3>
+      <p class="text-lg text-gray-700 mb-6 max-w-2xl mx-auto">
+        I'd love to hear from you! Whether you're interested in buying a painting, placing a custom order, or just saying hello, feel free to reach out through any of the platforms below.
+      </p>
+      <div class="flex justify-center space-x-8 text-gray-700 text-lg mt-8">
+        <a href="mailto:artist@example.com" class="flex items-center space-x-2 hover:text-indigo-600 transition">
+          <i data-feather="mail"></i><span>Email</span>
+        </a>
+        <a href="tel:+9771234567890" class="flex items-center space-x-2 hover:text-indigo-600 transition">
+          <i data-feather="phone"></i><span>Call</span>
+        </a>
+        <a href="https://www.instagram.com/yourusername" target="_blank" class="flex items-center space-x-2 hover:text-indigo-600 transition">
+          <i data-feather="instagram"></i><span>Instagram</span>
+        </a>
       </div>
     </div>
-    <!-- art section ends -->
+  </section>
 
-    <!-- BORDER 2-->
-    <div class="border2" id="jokesection">&#9734; JOKES FOR YOU &#9734;</div>
-    <!-- BORDER 2 ENDS -->
+  <!-- Scripts -->
+  <script>
+    // Mobile menu toggle
+    const btn = document.getElementById('mobile-menu-btn');
+    const nav = document.querySelector('nav');
+    btn.addEventListener('click', () => { nav.classList.toggle('hidden'); });
 
-    <!-- jokes section -->
+    // Gallery Artworks (all your artworks included)
+    const artworks = [];
+    const letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','zv','zw','zx','zy','zz'];
+    letters.forEach((l) => {
+      artworks.push({ title: "Ocean Breeze", price: "NRs. 3500", img: `Drawings/${l}.jpg`, desc: "Refreshing ocean view." });
+    });
+    artworks.push({ title: "Mountain Peaks", price: "NRs. 4800", img: "Drawings/zzz.jpg", desc: "Majestic mountains." });
 
-    <div class="jokes">
-      <div class="card">
-        <div class="cc">
-          <h4><b>1. What's The most Scariest Plant In the Forest?</b></h4>
-          <p>===> BamBOO!</p>
-        </div>
-      </div>
+    const columns = [document.getElementById("col1"), document.getElementById("col2"), document.getElementById("col3"), document.getElementById("col4")];
+    artworks.forEach((art, i) => {
+      const container = document.createElement("div");
+      container.className = "art-container";
+      container.innerHTML = `
+        <img src="${art.img}" alt="${art.title} - ${art.desc}" loading="lazy" onclick="openLightbox('${art.img}')">
+        <div class="art-overlay">
+          <h3 class="brand-font">${art.title}</h3>
+          <p>${art.price}</p>
+          <p>${art.desc}</p>
+        </div>`;
+      columns[i % 4].appendChild(container);
+    });
 
-      <div class="card">
-        <div class="cc">
-          <h4><b>2. What's Brown & Sticky?</b></h4>
-          <p>===> A Stick</p>
-        </div>
-      </div>
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').style.display = 'flex';
+    }
+    function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; }
+    document.addEventListener('keydown', e => e.key === "Escape" && closeLightbox());
 
-      <div class="card">
-        <div class="cc">
-          <h4><b>3. I only know 25 letters of the alphabet.</b></h4>
-          <p>===> I don't know y</p>
-        </div>
-      </div>
+    // Feather icons
+    feather.replace();
+  </script>
 
-      <div class="card">
-        <div class="cc">
-          <h4><b>4. Where do fruits go on vacation?</b></h4>
-          <p>===> Pear-is</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>5. I asked my dog what's Two plus Two.</b></h4>
-          <p>===> He said Nothing</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>6. What has more letters than the Alphabet?</b></h4>
-          <p>===> The Post Office</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>7. Why can't a nose be 12 inches long?</b></h4>
-          <p>===> Because then it would be a foot</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4>
-            <b>8. How many tickles does it take to make an Octopus laugh? </b>
-          </h4>
-          <p>===> Ten Tickles</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>9. I once got fired from a canned juice company.</b></h4>
-          <p>===> Apparently I couldn't concentrate</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>10. What is Red and really Bad for your teeth?</b></h4>
-          <p>===> A Flying Brick</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>11. Why are T-rex's unable to clap their hands?</b></h4>
-          <p>===> Because they are Extinct</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>12. What did number 7 say to number 8?</b></h4>
-          <p>===> Nice Belt</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>13. What did number 7 say to number 9?</b></h4>
-          <p>===> Nothing Numbers don't Talk</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>14. There are 10 types of People in the World.</b></h4>
-          <p>===> Those who understand Binary code & those who don't</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>15. What do you call a Cat that is drinking? </b></h4>
-          <p>===> A Cat</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>16. What do you call a joke that isn't funny?</b></h4>
-          <p>===> A Sentence</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>17. What's white and annoying at breakfast?</b></h4>
-          <p>===> An Avalanche</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b> 18. What's orange and tastes like an orange? </b></h4>
-          <p>===> An Orange</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4>
-            <b>19. What do you call an elephant in a telephone booth? </b>
-          </h4>
-          <p>===> Stuck</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>20. What's blue and smells like red paint?</b></h4>
-          <p>===> Blue Paint</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>21. Who shaves at least 20 times a day?</b></h4>
-          <p>===> A Barber</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>22. What did one Frenchman say to the other?</b></h4>
-          <p>===> I don't know, I don't speak French.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b> 23. What did the man say when he lost his truck?</b></h4>
-          <p>===> Where's my truck?</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>24. Do you want to know what always makes me smile?</b></h4>
-          <p>===> Face Muscles</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>25. Can a frog jump higher than a house? </b></h4>
-          <p>===> Of course, a house can't jump.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>26. Why did the old man fall down the well?</b></h4>
-          <p>===> He couldn't see that well.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>27. Why did the coffee taste like dirt?</b></h4>
-          <p>===> Because it was ground just a few minutes ago.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>28. Why did the Rolling Stones stop making music?</b></h4>
-          <p>===> Because they got to bottom of the hill.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>29. Did you hear about the fragile myth?</b></h4>
-          <p>===> It was busted.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>30. What's a skeleton's favorite type of road?</b></h4>
-          <p>===> A dead end.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>31. How do you make 7 even?</b></h4>
-          <p>===> Take away the S</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>32. What's an astronaut's favorite board game?</b></h4>
-          <p>===> Moon-opoly</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>33.Someone stole my mood ring.</b></h4>
-          <p>===>I don't know how I feel about that.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>34. What does a sprinter eat before a race? </b></h4>
-          <p>===> Nothing, they fast!</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>35. Why don't football players were glasses?</b></h4>
-          <p>===> It's a contact sport.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>36.What's the best animal in soccer?</b></h4>
-          <p>===> A score-pion.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>37. What did one hat say to the other? </b></h4>
-          <p>===> Stay here! I'm going on ahead.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>38. Dad, can you put my shoes on? </b></h4>
-          <p>===> No, I don't think they'll fit me.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>39. What kind of car does an egg drive? </b></h4>
-          <p>===> A yolkswagen.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>40. What's the best smelling insect? </b></h4>
-          <p>===> A deodor-ant.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>41. Where do math teachers go on vacation? </b></h4>
-          <p>===> Times Square.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>42. What's a robot's favorite snack? </b></h4>
-          <p>===> Computer chips.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>43. What did the beach say when the tide came in? </b></h4>
-          <p>===> Long time no sea</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>44. How much does it cost to swim with sharks? </b></h4>
-          <p>===> An arm and a leg.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>45. Where do penguins go to vote? </b></h4>
-          <p>===> The North Poll.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>46. How do mice floss their teeth? </b></h4>
-          <p>===> With string cheese.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>47. What kind of music do elves listen to? </b></h4>
-          <p>===> Wrap music.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>48. When does Friday come before Thursday? </b></h4>
-          <p>===> In the dictionary.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>49. What causes dry skin? </b></h4>
-          <p>===> A towel.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>50. What kind of bug can tell time? </b></h4>
-          <p>===> A clock-roach.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>51. Why are fish so smart? </b></h4>
-          <p>===> Because they swim in schools.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="cc">
-          <h4><b>52. How did the barber win the race? </b></h4>
-          <p>===> He knew a shortcut.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- jokes section ends -->
-
-    <!-- BORDER 3-->
-    <div class="border3" id="endsection">THANKS FOR VISITING</div>
-    <!-- BORDER 3 ENDS -->
-
-    <!-- footer section -->
-    <div class="footer">
-      <footer class="ff">
-        Prajesh Parajuli | &copy; 2024 All Rights Reserved
-      </footer>
-      <!-- <div class="footer_item">Footer section</div> -->
-    </div>
-    <!-- footer ends -->
-  </body>
+</body>
 </html>
