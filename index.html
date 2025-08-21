@@ -51,6 +51,8 @@
           <span class="text-sm text-gray-500">Authentic Hand-Painted Artworks</span>
         </div>
       </a>
+
+      <!-- Desktop Nav -->
       <nav class="space-x-6 text-lg font-medium hidden md:flex items-center">
         <a href="#home" class="hover:text-indigo-600 transition-colors">Home</a>
         <a href="#gallery" class="hover:text-indigo-600 transition-colors">Gallery</a>
@@ -59,9 +61,23 @@
           Contact
         </a>
       </nav>
+
+      <!-- Mobile Nav Button -->
       <button id="mobile-menu-btn" class="md:hidden text-gray-800 focus:outline-none">
         <i data-feather="menu"></i>
       </button>
+    </div>
+
+    <!-- Mobile Nav Dropdown -->
+    <div id="mobile-menu" class="md:hidden hidden bg-white shadow-md">
+      <nav class="flex flex-col space-y-4 p-4 text-lg font-medium">
+        <a href="#home" class="hover:text-indigo-600 transition-colors">Home</a>
+        <a href="#gallery" class="hover:text-indigo-600 transition-colors">Gallery</a>
+        <a href="#about" class="hover:text-indigo-600 transition-colors">About</a>
+        <a href="#contact" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition text-center">
+          Contact
+        </a>
+      </nav>
     </div>
   </header>
 
@@ -115,7 +131,7 @@
         <a href="mailto:prajessparajuli109@gmail.com" class="flex items-center space-x-2 hover:text-indigo-600 transition">
           <i data-feather="mail"></i><span>Email</span>
         </a>
-        <a href="tel:+977" class="flex items-center space-x-2 hover:text-indigo-600 transition">
+        <a href="tel:+9779800000000" class="flex items-center space-x-2 hover:text-indigo-600 transition">
           <i data-feather="phone"></i><span>Call</span>
         </a>
         <a href="https://www.instagram.com/parajuliprajesh" target="_blank" class="flex items-center space-x-2 hover:text-indigo-600 transition">
@@ -127,12 +143,19 @@
 
   <!-- Scripts -->
   <script>
-    // Mobile menu
-    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-      document.querySelector('nav').classList.toggle('hidden');
+    // Mobile menu dropdown with icon toggle
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    let isOpen = false;
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      isOpen = !isOpen;
+      menuBtn.innerHTML = isOpen ? '<i data-feather="x"></i>' : '<i data-feather="menu"></i>';
+      feather.replace();
     });
 
-    // Artworks list (all your drawings with unique names & prices)
+    // Artworks list
     const artworks = [
       { title: "Chihiro", price: "NRs. 1500", img: "Drawings/a.jpg", desc: "" },
       { title: "Buddha & Oni", price: "NRs. 2500", img: "Drawings/b.jpg", desc: "" },
@@ -154,18 +177,17 @@
       { title: "Goku", price: "NRs. 300", img: "Drawings/r.jpg", desc: "" },
       { title: "Gyomei", price: "NRs. 300", img: "Drawings/s.jpg", desc: "" },
       { title: "Rick & Morty", price: "NRs. 200", img: "Drawings/t.jpg", desc: "" },
-      { title: "Goku", price: "NRs. 300", img: "Drawings/u.jpg", desc: "" },
+      { title: "Goku (Sketch)", price: "NRs. 300", img: "Drawings/u.jpg", desc: "" },
       { title: "Sanemi", price: "NRs. 500", img: "Drawings/v.jpg", desc: "" },
-      { title: "Straw-Hat Crew", price: "NRs. 1100", img: "Drawings/w.jpg", desc: "" },
+      { title: "Straw-Hat Crew (Mini)", price: "NRs. 1100", img: "Drawings/w.jpg", desc: "" },
       { title: "Ichigo", price: "NRs. 300", img: "Drawings/x.jpg", desc: "" },
       { title: "Buddha", price: "NRs. 300", img: "Drawings/y.jpg", desc: "" },
       { title: "Escanor", price: "NRs. 200", img: "Drawings/z.jpg", desc: "" },
       { title: "Saitama", price: "NRs. 200", img: "Drawings/zv.jpg", desc: "" },
       { title: "Chopper", price: "NRs. 500", img: "Drawings/zw.jpg", desc: "" },
       { title: "Rengoku", price: "NRs. 200", img: "Drawings/zx.jpg", desc: "" },
-      { title: "Zoro", price: "NRs. 200", img: "Drawings/zy.jpg", desc: "" },
+      { title: "Zoro (Small)", price: "NRs. 200", img: "Drawings/zy.jpg", desc: "" },
       { title: "Zenitsu", price: "NRs. 300", img: "Drawings/zz.jpg", desc: "" }
-      
     ];
 
     const cols = [document.getElementById("col1"), document.getElementById("col2"), document.getElementById("col3"), document.getElementById("col4")];
